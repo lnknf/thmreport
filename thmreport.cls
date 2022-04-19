@@ -8,7 +8,7 @@
 \LoadClass{report}
 
 \RequirePackage{ifthen}
-\RequirePackage{cmds}
+\RequirePackage{template/cmds}
 
 
 % ---Parameter verarbeiten
@@ -77,9 +77,9 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 % ausgelagerte Pakete
-\RequirePackage{reportmetadata}
-\RequirePackage{thmpagestyles}
-\RequirePackage{thmtitlepage}
+\RequirePackage{template/reportmetadata}
+\RequirePackage{template/thmpagestyles}
+\RequirePackage{template/thmtitlepage}
 
 \RequirePackage{etoolbox}
 
