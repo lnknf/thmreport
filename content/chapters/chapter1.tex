@@ -1,0 +1,58 @@
+\chapter{Einleitung}        % Gibt ein neues Kapitel an
+\chaptermark{Einleitung}    % Ändert die Kopfzeile für das aktuelle Kapitel
+\section{Aufgabenstellung}  % Gibt einen neuen Abschnitt an
+Das ist das erste Kapitel.
+Ein Zeilenumbruch wird automatisch entfernt, genauso    wie   überflüssige                 Leerzeichen.
+
+Einen neuen Abschnitt beginnt man mit mindestens einer Leerzeile zwischen den Sätzen.
+
+
+
+
+Dabei werden mehrere Leerzeilen wie eine behandelt.
+
+Einen Zeilenumbruch kann man mit \\ erzwingen, das ist allerdings nach Möglichkeit zu vermeiden.
+
+So sieht ein Literaturverweis aus: "Hier steht ein Text" \cite{OPCFoundation}.
+\newpage
+\section{Zweiter Abschnitt im ersten Kapitel}
+\chaptermark{Hier steht jetzt etwas anderes.}
+Eine neue Seite beginnt man mit \textbackslash newpage.
+%Hier steht ein Kommentar
+Kommentare werden übrigens nicht als Leerzeilen gezählt.
+
+%So integriert man ein Bild
+\begin{figure}[h]                                               % Anfang der Deklaration einer Abbildung
+    \includegraphics[width=0.5\textwidth]{content/img/company.png}        % Einbinden der Grafik mit halber Breite des Textbereichs
+    \caption{Firmenlogo}                                        % Bezeichnung der Abbildung
+    \label{fig:firmenlogo}                                      % Interne Bezeichnung der Abbildung um aus dem Text darauf verweisen zu können
+\end{figure}
+
+Man kann zum Beispiel wie folgt auf eine Abbildung oder Tabelle verweisen: Siehe \autoref{fig:firmenlogo}
+
+\newpage
+Hier ist Beispielhaft eine Tabelle dargestellt.
+
+Sie kann mittels \textbackslash autoref\{tab:liste\_der\_werkstoffe\} referenziert werden.\\
+Bsp: \glqq Siehe \autoref{tab:liste_der_werkstoffe}\grqq
+
+% Beispieltabelle, & wird als Trennzeichen zwischen den Spalten verwendet
+\begin{table}[htb]
+    \begin{tabular}{lccc}\toprule                   % Toprule generiert die Linie über der Tabelle
+    \textbf{Stoff}	&\textbf{Dichte} &\textbf{Dichte} &\textbf{chemische Bezeichnung}	\\
+                & \(kg/m^{3}\)	& \(g/cm^3\) 	& \\\midrule         % Midrule generiert die Linie in der Mitte der Tabelle
+    Holz		& 400...800	& 0,400...0,800	&- \\
+    Plexiglas 	& 1190	& 1,19	& - 	\\
+    Aluminium	& 2710	& 2,71	& Al	\\
+    Titan		& 4500	& 4,5	& Ti	\\
+    Gusseisen	& 7250	& 7,25	& - \\
+    Stahl legiert& 7900	& 7,9	& - \\
+    Messing		& 8.100...8.700	& 8,100...8,700	& Cu-Zn-Legierung\\
+    Konstantan	& 8800	& 8,8	& \ch{Cu55Ni45}-Legierung\\
+    Nickel		& 8910	& 8,91  & Ni \\
+    Kupfer		& 8.920...8.960	& 8,920...8,960	& Cu\\
+    Gold		& 19302	& 19,302& Au	\\\bottomrule               % Bottomrule generiert die Linie unter der Tabelle
+    \end{tabular}
+    \caption{Liste von Werkstoffen}
+    \label{tab:liste_der_werkstoffe}
+\end{table}
