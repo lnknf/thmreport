@@ -5,67 +5,27 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thmreport}[2019/10/01 THM Praxisphasenbericht/Thesis]
-\LoadClass{report}
+\LoadClass[12pt,draft]{report}
 
+% ---Pakete laden---
+\RequirePackage[ngerman]{babel}
+\RequirePackage{csquotes}
+\RequirePackage{titlesec}
 \RequirePackage{ifthen}
-\RequirePackage{template/cmds}
+\RequirePackage{etoolbox}
+\RequirePackage{listings}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{parskip}
+\RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
+\RequirePackage{booktabs}
+\RequirePackage{microtype}
 
+% captions von Tabellen und Abbildungen linksbündig machen
+\RequirePackage[singlelinecheck=false]{caption}
 
-% ---Parameter verarbeiten
-\RequirePackage{xkeyval}
-
-% --- Parameter: bibpath ---
-\define@key{thmreport.cls}{bibpath}[{}]{ \def\bibpath{#1} }
-\ExecuteOptionsX{bibpath}
-
-% --- Parameter: abstractpath ---
-\define@key{thmreport.cls}{abstractpath}[{}]{ \def\abstractpath{#1} }
-\ExecuteOptionsX{abstractpath}
-
-% --- Parameter: conficlausepath ---
-\define@key{thmreport.cls}{conficlausepath}[{}]{ \def\conficlausepath{#1} }
-\ExecuteOptionsX{conficlausepath}
-
-
-% --- Parameter: lang ---
-\define@key{thmreport.cls}{lang}[de]{ \def\reportlang{#1} }
-\ExecuteOptionsX{lang}
-
-% --- Parameter: type ---
-\define@key{thmreport.cls}{type}[thesis]{ \def\reporttype{#1} }
-\ExecuteOptionsX{type}
-\ProcessOptionsX
-
-\DeclareOption{hasfigures}{ \def\hasfigures{true} }
-\DeclareOption{hastables}{ \def\hastables{true} }
-\DeclareOption{haslistings}{ \def\haslistings{true} }
-\ProcessOptions\relax
-
-
-
-% falls "lang" == "de"
-\ifthenelse{\equal{\reportlang}{de}}{
-  % deutsche Begriffe verwenden
-  \def\abstracttitle{Abstrakt}
-  \def\conficlausetitle{Sperrvermerk}
-
-  \def\indirciteVgl{Vgl.}
-}{
-  \def\abstracttitle{Abstract}
-  \def\conficlausetitle{Confidentiality Clause}
-
-  \def\indirciteVgl{See}
-}
-
-\ifthenelse{\equal{\reporttype}{thesis}}{
-  % Dokument ist eine Thesis
-  \def\reporttype{Bachelor-Thesis}
-  \def\reportsubtype{zur Erlangung des Grades Bachelor of Science}
-}{
-  % Dokument ist ein Praxisphasenbericht    
-  \def\reporttype{Praxisphasen-Bericht}
-  \def\reportsubtype{}
-}
+% ausgelagerte eigene Pakete
+\RequirePackage{template/thmpagestyles}
+\RequirePackage{template/thmtitlepage}
 
 
 % Zeilenabstand 1.5-fach
@@ -73,72 +33,112 @@
 \onehalfspacing
 
 % Schriftart
-\RequirePackage{helvet}
+\RequirePackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
-% ausgelagerte Pakete
-\RequirePackage{template/reportmetadata}
-\RequirePackage{template/thmpagestyles}
-\RequirePackage{template/thmtitlepage}
 
-\RequirePackage{etoolbox}
+% Texte für Type und Subttype definieren
+\ifthenelse{\equal{\MyType}{bachelor}}{
+  % Dokument ist eine Thesis
+  \def\reporttype{Bachelor-Thesis}
+  \def\reportsubtype{zur Erlangung des Grades Bachelor of Engineering}
+}{
+  \ifthenelse{\equal{\MyType}{master}}{
+    % Dokument ist ein Praxisphasenbericht    
+    \def\reporttype{Master-Thesis}
+    \def\reportsubtype{zur Erlangung des Grades Master of Engineering}
+  }{
+    \ifthenelse{\equal{\MyType}{praxis}}{
+    % Dokument ist ein Praxisphasenbericht    
+    \def\reporttype{\MyNummerPP. Praxisphase im \MySemester}
+    \def\reportsubtype{ }
+    }{
+      \ifthenelse{\equal{\MyType}{projekt}}{
+        % Dokument ist ein Praxisphasenbericht    
+        \def\reporttype{Projektstudium im \MySemester}
+        \def\reportsubtype{ }
+      }{
+        % Dokument ist nichts davon
+        \def\reporttype{type}
+        \def\reportsubtype{subtype}
+      }
+    }
+  }
+}
 
+% Standardelemente des Dokuments generieren
 \AfterEndPreamble{
-  \maketitle
+  \maketitle 
 
   \pagenumbering{Roman}
   \setcounter{page}{2}
   \pagestyle{plain}
 
-  \ifnotnull{\conficlausepath}{
-    \chapter*{\conficlausetitle}
-    \input{\conficlausepath}
+  % Sperrvermerk einfügen falls \MyConficlausepath angegeben
+  \ifdef{\MyConficlausepath}{
+    \chapter*{Sperrvermerk}
+    \chaptermark{Sperrvermerk}
+    \input{\MyConficlausepath}
   }
 
-  \ifnotnull{\abstractpath}{
-    \chapter*{\abstracttitle}
-    \input{\abstractpath}
+  % Abstract einfügen falls \MyAbstractpath angegeben
+  \ifdef{\MyAbstractpath}{
+    \chapter*{Abstrakt}
+    \chaptermark{Abstrakt}
+    \input{\MyAbstractpath}
   }
 
-  
+  % Inhaltsverzeichnus einfügen
   \tableofcontents
 
-  % Liste der Abbildungen anzeigen 
-  \ifdefined\hasfigures \listoffigures \fi
+  % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
+  \ifdefined\MyHasFigures \listoffigures \fi
   
-  % Liste der Tabellen anzeigen 
-  \ifdefined\hastables \listoftables \fi
+  % Liste der Tabellen einfügen falls \MyHasTables angegeben
+  \ifdefined\MyHasTables \listoftables \fi
   
-  % Liste der Listings anzeigen 
-  \ifdefined\haslistings \lstlistoflistings \fi
+  % Liste der Listings einfügen falls \MyHasListings angegeben
+  \ifdefined\MyHasListings \lstlistoflistings \fi
     
   \clearpage
   \pagenumbering{arabic}
   \pagestyle{main}
 }
 
-% important: AtEndDocument needs to be defined, before biblatex is imported
-% see https://tex.stackexchange.com/questions/371814
+% Literaturverzeichnis einfügen falls \MyBibpath angegeben
+% (important: AtEndDocument needs to be defined, before biblatex is imported; see https://tex.stackexchange.com/questions/371814)
 \AtEndDocument{
-  \pagestyle{empty}
-  \ifnotnull{\bibpath}{
+  % \pagestyle{empty}
+  \ifdef{\MyBibpath}{
     \printbibliography
+  }
+
+  \ifdef{\MyVersicherungPfad}{
+    \chapter*{Versicherung}
+    \chaptermark{Versicherung}
+    \input{\MyVersicherungPfad}
   }
 }
 
 
-% Literaturverzeichnis anhängen, falls vorhanden
-\ifnotnull{\bibpath}{  
+% Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
+\ifdef{\MyBibpath}{  
 
   \usepackage[%
     backend=biber,%
-    autocite=footnote,%
-    style=authortitle-ibid]{biblatex}
-  \addbibresource{\bibpath}
+    sorting=none,%
+    style=LNI,%
+    hyperref=auto]{biblatex}
+  \addbibresource{\MyBibpath}
 
-  % commands zum Zitieren
-  % indirektes Zitat
-  \newcommand{\indircite}[2]{\footnote{\indirciteVgl \cite{#1} #2}}
-  % direktes Zitat
-  \newcommand{\dircite}[2]{\footnote{\cite{#1} #2}}
 }
+
+% Nummerierung von Abbildungen und Tabellen fortlaufend und nicht Kapitelabhängig
+\RequirePackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% Kapitelüberschriften formatieren
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{-3ex plus 1ex minus .2ex}{1.3ex plus .2ex}

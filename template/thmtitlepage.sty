@@ -1,25 +1,31 @@
 % ----------
 % Titelseite
-%   Die erste Seite im Dokument 
+% Die erste Seite im Dokument 
 % ----------
+
+% Überschreiben des \maketitle Befehls
 \renewcommand{\maketitle}{
   \begin{titlepage}
-    % oben definierten pagestyle nehmen
+
+    % in thmpagestyles.sty definierten fancypagestyle nehmen
     %   -> THM Banner im header 
     \thispagestyle{titlepage}
+
     % mittig ausrichten
     \begin{center}
-        % einen halben centimeter Abstand
+
+        % einen halben Zentimeter Abstand
         %   -> Leerzeichen am Anfang/Ende einer Seite werden automatisch abgeschnitten
         %      da noch kein Inhalt auf der Seite vorhanden ist,
         %      muss hier \vspace* verwendet werden
         \vspace*{0.5cm}
 
-        % Art des Dokumentes
+        % Art des Dokumentes einfügen
         \LARGE{\textbf{\reporttype}}
 
         \vspace{1cm}
-        % Unterart/Motivation
+        
+        % Unterart einfügen
         \large{\reportsubtype}
     \end{center}
     
@@ -29,27 +35,24 @@
     \vspace{0.2cm} \\
     % Titel & Untertitel
     % keine Einrückung 
-    \noindent\Large{\textbf{%
-      \title
-    }} \\
-    \large{\subtitle}
+    \noindent\Large{\textbf{\MyTitle}} \\
     \vspace{1.5cm}
     
     % Studenten Tabelle 
     \normalsize
-    \noindent\begin{tabular}{@{}p{3.2cm} l@{}}
+    \noindent\begin{tabular}{@{}p{3.5cm} l@{}}
       Vorgelegt von: & \student \\
                      & \studentStrasse \\
                      & \studentOrt \\ 
                      & \\
-      Matrikelnummer & \matnr 
+      Matrikelnummer: & \matnr 
     \end{tabular}
     % 1cm Abstand
     \vspace{1cm}
     
     % Betreuer Tabelle       
     \noindent Eingereicht bei\\
-    \noindent\begin{tabular}{@{}p{3.2cm} l@{}}
+    \noindent\begin{tabular}{@{}p{3.5cm} l@{}}
       Hochschulbetreuer: & \professor\\
       Fachbetreuer: & \betreuer \\
     \end{tabular}
@@ -57,9 +60,10 @@
     \vspace{1cm}
 
     % Firma und Abgabedatum
-    \noindent\begin{tabular}{@{}p{3.2cm} l@{}}
+    \noindent\begin{tabular}{@{}p{3.5cm} l@{}}
       Unternehmen: & \firma \\
-                   & \\
+                   & \firmaOrt \\
+                   \\
       Eingereicht am: & \abgabedat \\
     \end{tabular}
   \end{titlepage}
