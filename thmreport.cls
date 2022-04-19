@@ -127,7 +127,7 @@
   \usepackage[%
     backend=biber,%
     sorting=none,%
-    style=LNI,%
+    style=template/LNI_custom,%
     hyperref=auto]{biblatex}
   \addbibresource{\MyBibpath}
 

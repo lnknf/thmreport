@@ -5,6 +5,7 @@ dircite.png
 *.bcf
 *.lot
 *.lof
+*.run.xml
 
 
 # More LaTeX Stuff ( from: https://gist.githubusercontent.com/misberner/8316891/raw/207c5dc215a985a075867ef6dfea3ba3118742f2/.gitignore-latex )
