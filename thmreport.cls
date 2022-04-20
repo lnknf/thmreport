@@ -134,10 +134,10 @@
     \printbibliography
   }
 
-  \ifdef{\MyVersicherungPfad}{
+  \ifdef{\MyStatutoryDeclPath}{
     \chapter*{Versicherung}
     \chaptermark{Versicherung}
-    \input{\MyVersicherungPfad}
+    \input{\MyStatutoryDeclPath}
   }
 }
 
