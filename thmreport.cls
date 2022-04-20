@@ -20,8 +20,23 @@
 \RequirePackage{booktabs}
 \RequirePackage{microtype}
 
-% captions von Tabellen und Abbildungen linksbündig machen
-\RequirePackage[singlelinecheck=false]{caption}
+% Captions von Tabellen und Abbildungen formatieren
+\RequirePackage[singlelinecheck=false]{caption} % Linksbündig machen
+\captionsetup[figure]{labelfont={bf}} % "Abbildung X" fett machen
+\captionsetup[table]{labelfont={bf}} % "Tabelle X" fett machen
+
+% Tabellen- und Abbildungsverzeichnis formatieren
+\RequirePackage[titles]{tocloft}
+\renewcommand\cftfigindent{\setlength{1pt}}
+\renewcommand\cftfignumwidth{\setlength{73pt}}
+\renewcommand\cftfigpresnum{Abbildung }
+\renewcommand\cftfigaftersnum{:}
+
+\renewcommand\cfttabindent{\setlength{1pt}}
+\renewcommand\cfttabnumwidth{\setlength{58pt}}
+\renewcommand\cfttabpresnum{Tabelle }
+\renewcommand\cfttabaftersnum{:}
+
 
 % ausgelagerte eigene Pakete
 \RequirePackage{template/thmpagestyles}
@@ -89,16 +104,18 @@
   }
 
   % Inhaltsverzeichnus einfügen
+  \clearpage
   \tableofcontents
 
   % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
-  \ifdefined\MyHasFigures \listoffigures \fi
+  \ifdefined\MyHasFigures \clearpage \listoffigures \fi
   
   % Liste der Tabellen einfügen falls \MyHasTables angegeben
-  \ifdefined\MyHasTables \listoftables \fi
+  \ifdefined\MyHasTables \clearpage \listoftables \fi
   
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
+    \clearpage
     \chapter*{Abkürzungsverzeichnis}
     \chaptermark{Abkürzungsverzeichnis}
     \input{\MyAbbrevPath}
