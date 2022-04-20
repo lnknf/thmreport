@@ -97,8 +97,12 @@
   % Liste der Tabellen einfügen falls \MyHasTables angegeben
   \ifdefined\MyHasTables \listoftables \fi
   
-  % Liste der Listings einfügen falls \MyHasListings angegeben
-  \ifdefined\MyHasListings \lstlistoflistings \fi
+  % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
+  \ifdef{\MyAbbrevPath}{
+    \chapter*{Abkürzungsverzeichnis}
+    \chaptermark{Abkürzungsverzeichnis}
+    \input{\MyAbbrevPath}
+  }
     
   \clearpage
   \pagenumbering{arabic}
