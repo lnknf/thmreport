@@ -103,21 +103,30 @@
     \input{\MyAbstractpath}
   }
 
-  % Inhaltsverzeichnus einfügen
+  % Inhaltsverzeichnis einfügen
   \clearpage
   \tableofcontents
 
   % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
-  \ifdefined\MyHasFigures \clearpage \listoffigures \fi
+  \ifdef{\MyHasFigures}{
+    \clearpage
+    \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \listoffigures
+  }
   
   % Liste der Tabellen einfügen falls \MyHasTables angegeben
-  \ifdefined\MyHasTables \clearpage \listoftables \fi
+  \ifdef{\MyHasTables}{
+    \clearpage
+    \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \listoftables
+  }
   
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
     \clearpage
     \chapter*{Abkürzungsverzeichnis}
     \chaptermark{Abkürzungsverzeichnis}
+    \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
     \input{\MyAbbrevPath}
   }
     
@@ -132,13 +141,27 @@
   % \pagestyle{empty}
   \ifdef{\MyBibpath}{
     \printbibliography
+    \addcontentsline{toc}{chapter}{Literaturverzeichnis}
   }
 
   \ifdef{\MyStatutoryDeclPath}{
+    \clearpage
     \chapter*{Versicherung}
     \chaptermark{Versicherung}
+    \addcontentsline{toc}{chapter}{Versicherung}
     \input{\MyStatutoryDeclPath}
   }
+
+  % \ifdef{\MyAppendixPath}{
+    \clearpage
+    \appendix
+    \renewcommand{\thechapter}{Anhang \Roman{chapter}}
+    \newcommand{\anhang}[1]{
+      \chapter{#1}%
+      \chaptermark{\thechapter \quad #1}%
+    }
+    \input{\MyAppendixPath}
+  % }
 }
 
 

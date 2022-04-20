@@ -10,6 +10,7 @@
 \newcommand{\MyBibpath}{sources.bib}                          % Gibt den Pfad zu den Literaturdaten an und generiert ein Literaturverzeichnis, auskommentieren falls nicht benötigt
 \newcommand{\MyStatutoryDeclPath}{content/StatutoryDecl.tex}  % Bindet die angegebene Eidesstattliche Erklärung mit ein, auskommentieren falls nicht benötigt
 \newcommand{\MyLogo}{content/img/company.png}                 % Gibt die Datei an, die als Logo oben rechts auf der Seite erscheint, auskommentieren wenn kein Logo verwendet werden soll
+\newcommand{\MyAppendixPath}{content/appendix.tex}            % Bindet den angegebenen Anhang ein, auskommentieren falls nicht benötigt
 
 % --- Angaben zur Titelseite ---
 \newcommand{\MyTitle}{Das ist der Projekttitel}       % Titel bzw. Thema des Dokuments
@@ -30,7 +31,7 @@
 
 \begin{document}
 
-\input{content/chapters/chapter1.tex}
+\include{content/chapters/chapter1.tex}
 
 Hier kommen die nächsten Kapitel.
 
