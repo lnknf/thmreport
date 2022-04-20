@@ -162,4 +162,4 @@
 % Kapitelüberschriften formatieren
 \titleformat{\chapter}
   {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
-\titlespacing*{\chapter}{0pt}{-3ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+\titlespacing*{\chapter}{0pt}{-5.8ex}{1.3ex plus .2ex}
