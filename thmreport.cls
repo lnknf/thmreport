@@ -5,7 +5,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thmreport}[2019/10/01 THM Praxisphasenbericht/Thesis]
-\LoadClass[12pt,draft]{report}
+\LoadClass[12pt]{report} % Option "draft" um textüberschneidung (overfull box) durch schwarze kästchen markiert zu bekommen 
 
 % ---Pakete laden---
 \RequirePackage[ngerman]{babel}
@@ -155,6 +155,7 @@
   % \ifdef{\MyAppendixPath}{
     \clearpage
     \appendix
+    \addtocontents{toc}{\protect\setlength{\cftchapnumwidth}{75pt}}
     \renewcommand{\thechapter}{Anhang \Roman{chapter}}
     \newcommand{\anhang}[1]{
       \chapter{#1}%
