@@ -13,7 +13,6 @@
 \RequirePackage{titlesec}
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
-\RequirePackage{listings}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{parskip}
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
