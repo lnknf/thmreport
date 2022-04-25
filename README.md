@@ -142,5 +142,9 @@ Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustell
 
 * `geometry`: Anpassen des Seitenformats und der Seitenränder.
 
+* `csquotes`: XX. Wird von `babel` benötigt.
+
+* `silence`: Unterdrücken von nicht vermeidbaren Warnungen.
+
 ## Packages nur für das Beispiel benötigt: 
 * `chemformula`: Erlaubt das Einfügen von chemischen Formeln mittels `\ch`.

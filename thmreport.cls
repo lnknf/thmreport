@@ -9,14 +9,18 @@
 
 % ---Pakete laden---
 \RequirePackage[ngerman]{babel}
+\RequirePackage{csquotes}
 \RequirePackage{titlesec}
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{parskip}
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage{booktabs}
 \RequirePackage{microtype}
+
+% Warnings filtern
+\RequirePackage{silence}
+\WarningFilter{microtype}{Unable to apply patch `footnote'}
 
 % Captions von Tabellen und Abbildungen formatieren
 \RequirePackage[singlelinecheck=false]{caption} % Linksbündig machen
@@ -29,12 +33,12 @@
 \renewcommand\cftfignumwidth{\setlength{73pt}}
 \renewcommand\cftfigpresnum{Abbildung }
 \renewcommand\cftfigaftersnum{:}
-
 \renewcommand\cfttabindent{\setlength{1pt}}
 \renewcommand\cfttabnumwidth{\setlength{58pt}}
 \renewcommand\cfttabpresnum{Tabelle }
 \renewcommand\cfttabaftersnum{:}
 
+\RequirePackage{parskip}
 
 % ausgelagerte eigene Pakete
 \RequirePackage{template/thmpagestyles}
