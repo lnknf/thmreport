@@ -151,17 +151,19 @@
     \input{\MyStatutoryDeclPath}
   }
 
-  % \ifdef{\MyAppendixPath}{
-    \clearpage
-    \appendix
-    \addtocontents{toc}{\protect\setlength{\cftchapnumwidth}{75pt}}
-    \renewcommand{\thechapter}{Anhang \Roman{chapter}}
-    \newcommand{\anhang}[1]{
-      \chapter{#1}%
-      \chaptermark{\thechapter \quad #1}%
-    }
+  
+  \clearpage
+  \appendix
+  \addtocontents{toc}{\protect\setlength{\cftchapnumwidth}{75pt}}
+  \renewcommand{\thechapter}{Anhang \Roman{chapter}}
+  \newcommand{\anhang}[1]{
+    \chapter{#1}%
+    \chaptermark{\thechapter \quad #1}%
+  }
+  \ifthenelse{\isundefined{\MyAppendixPath}}{
+  }{
     \input{\MyAppendixPath}
-  % }
+  }
 }
 
 
