@@ -32,7 +32,7 @@ Zum Einsatz kommt biber/biblatex. Das ist ein Paket, welches in allen modernen T
 Das Literaturverzeichnis wird nach Vorgabe am Ende des Dokumentes eingefügt und Zitate werden mit Verweis zum Literaturverzeichnis versehen (üblich im technischen Bereich).
 
 ## Zitieren
-Zum Zitieren reicht es auch, `\cite{QUELLE}` zu nutzen
+Zum Zitieren reicht es aus, `\cite{QUELLE}` zu nutzen.
 
 ## Abkürzungsverzeichnis
 Ein Abkürzungsverzeichnis kann automatisch eingebunden werden.
