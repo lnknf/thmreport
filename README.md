@@ -10,18 +10,23 @@ Ein Beispieldokument kann [hier](https://github.com/leonknauf/thmreport/blob/mas
 ## Installation
 Da das Paket nicht auf LaTeX Distributionen verfügbar ist, ist das Klonen des Repositories die bevorzugte Lösung.
 
-`git clone git@github.com:leonknauf/thmreport.git`
+`git clone https://github.com/leonknauf/thmreport.git`
 
 Alternativ kann auch die Template-Funktion von GitHub genutzt werden und so der Inhalt dieses Repositories in ein eigenes kopiert werden.
 
-## Erstellung eines Berichts
-Das Template kann entsprechend angepasst werden und mit den eigenen Daten ausgefüllt werden.
+## Softwareumgebung
+
+Dieses Projekt wurde mit der LaTeX-Distribution [TeXLive](https://www.tug.org/texlive/) in Visual Studio Code mit der Erweiterung [LaTeX-Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) erstellt.
+
+Zur Rechtschreibprüfung kann die Erweiterung [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) verwendet werden.
+Optional kann dort noch die Prüfung mittels n-gram Datensätzen aktiviert werden.
+Siehe dazu folgende [Anleitung](https://dev.languagetool.org/finding-errors-using-n-gram-data.html). Der Pfad der Datensätze muss in folgender Einstellung von LTeX angegeben werden: `ltex.additionalRules.languageModel` (siehe [LTeX Settings](https://valentjn.github.io/ltex/settings.html#ltexadditionalruleslanguagemodel))
 
 # Features
 Das Template existiert, um die Erstellung des Berichts einfacher zu gestalten. Viele Kleinigkeiten, die per Hand gemacht werden müssten, sind bereits eingerichtet.
 
 ## Maße
-Die vorgegebenen Abstände entsprechen den offiziellen Vorgaben der THM/StudimPlus. Falls keine genauen Vorgaben gemacht werden, wurde das Dokument "Richtlinie Wissenschaftliches Arbeiten" selbst als Vorlage verwendet.
+Die vorgegebenen Abstände entsprechen den offiziellen Vorgaben der THM/StudiumPlus. Falls keine genauen Vorgaben gemacht werden, wurde das Dokument "Richtlinie Wissenschaftliches Arbeiten" selbst als Vorlage verwendet.
 
 ## Firmenlogo
 Es besteht die Möglichkeit ein Firmenlogo einzubinden. Dieses wird auf jeder Seite oben rechts erscheinen. Auf der Titelseite ist es unten rechts zu finden. Es sollten im besten Fall ähnliche Maße wie das Beispielbild aufweisen.
