@@ -4,8 +4,7 @@ Als Vorlage wurden die Formatvorgaben aus dem Dokument "Richtlinien zum Wissensc
 
 Diese Vorlage ist eine Erweiterung von: [github.com/jnnks/thmreport](https://github.com/jnnks/thmreport)
 
-[Bilder folgen hier]
-
+Ein Beispieldokument kann [hier](https://github.com/leonknauf/thmreport/blob/master/example.pdf) angesehen werden.
 
 # Erste Schritte
 ## Installation
