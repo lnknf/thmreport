@@ -1,6 +1,6 @@
-Das Package enthält eine LaTeX documentclass sowie ein Beispielbericht zur Erstellung von Praxisphasenberichten im Rahmen der THM und StudiumPlus.
+Dieses Projekt enthält eine LaTeX documentclass sowie ein Beispieldokument zur Erstellung von Praxisphasenberichten im Rahmen der THM und StudiumPlus.
 
-Als Vorlage wurden sowohl die Formatvorgaben aus dem Dokument "Richtlinien zum Wissenschaftlichen Arbeiten" (Stand Okt. 2019) benutzt.
+Als Vorlage wurden die Formatvorgaben aus dem Dokument "Richtlinien zum Wissenschaftlichen Arbeiten" (Stand Okt. 2019) benutzt.
 
 Diese Vorlage ist eine Erweiterung von: [github.com/jnnks/thmreport](https://github.com/jnnks/thmreport)
 
@@ -13,94 +13,134 @@ Da das Paket nicht auf LaTeX Distributionen verfügbar ist, ist das Klonen des R
 
 `git clone git@github.com:leonknauf/thmreport.git`
 
+Alternativ kann auch die Template-Funktion von GitHub genutzt werden und so der Inhalt dieses Repositories in ein eigenes kopiert werden.
+
 ## Erstellung eines Berichts
 Das Template kann entsprechend angepasst werden und mit den eigenen Daten ausgefüllt werden.
 
 # Features
-Das Template existiert, um die Erstellung des Berichts einfacher zu gestalten. Viele Kleinigkeiten, die per Hand gemacht werden müssten, sind eingerichtet.
+Das Template existiert, um die Erstellung des Berichts einfacher zu gestalten. Viele Kleinigkeiten, die per Hand gemacht werden müssten, sind bereits eingerichtet.
 
 ## Maße
-Die vorgegebenen Abstände entsprechen den offiziellen Vorgaben der THM/StdPlus. Falls keine genauen Vorgaben gemacht werden, wurde das Dokument "Richtlinie Wissenschaftliches Arbeiten" selbst als Vorlage verwendet.
+Die vorgegebenen Abstände entsprechen den offiziellen Vorgaben der THM/StudimPlus. Falls keine genauen Vorgaben gemacht werden, wurde das Dokument "Richtlinie Wissenschaftliches Arbeiten" selbst als Vorlage verwendet.
+
+## Firmenlogo
+Es besteht die Möglichkeit ein Firmenlogo einzubinden. Dieses wird auf jeder Seite oben rechts erscheinen. Auf der Titelseite ist es unten rechts zu finden. Es sollten im besten Fall ähnliche Maße wie das Beispielbild aufweisen.
 
 ## Literaturverzeichnis
-Zum Einsatz kommt biber/biblatex. Das ist ein Paket, welches in allen mordernen Tex Installationen vorhanden ist, bzw. installiert werden kann. 
+Zum Einsatz kommt biber/biblatex. Das ist ein Paket, welches in allen modernen TeX Installationen vorhanden ist, bzw. installiert werden kann. 
 Das Literaturverzeichnis wird nach Vorgabe am Ende des Dokumentes eingefügt und Zitate werden mit Verweis zum Literaturverzeichnis versehen (üblich im technischen Bereich).
 
 ## Zitieren
 Zum Zitieren reicht es auch, `\cite{QUELLE}` zu nutzen
 
+## Abkürzungsverzeichnis
+Ein Abkürzungsverzeichnis kann automatisch eingebunden werden.
 
-# Anspassung und Erweiterung
+## Sperrvermerk
+Ein beispielhafter Sperrvermerk ist bereits vorhanden und kann bei Bedarf genutzt werden.
+
+## Abstract
+Es besteht die Möglichkeit am Anfang des Dokumentes ein Abstract einzufügen. Dieses taucht nicht im Inhaltsverzeichnis auf.
+
+## Eidesstattliche Erklärung / Versicherung
+Eine beispielhafte Versicherung ist bereits vorhanden und kann bei Bedarf genutzt werden.
+
+## Anhang
+In der Datei `appendix.tex` wird der Anhang definiert. Ein neuer Anhang kann jeweils mittels `\anhang{Name des Anhangs}` definiert werden. 
+
+# Anpassung und Erweiterung
 ## Parameter zum Personalisieren
-Die documentclass enthält Variablen, die nicht als Parameter repräsentiert sind. Dafür werden commands verwendet, die sich wie globale Variablen verhalten.
+Die documentclass enthält Variablen, die nicht als Parameter repräsentiert sind. Dafür werden Befehle verwendet, die sich wie globale Variablen verhalten.
 
-Werte wie Titel, Autor und Name der Firma müssen vorgegeben werden.
+### Erforderliche Parameter
+* `MyType` [bachelor,master,projekt,praxis]: Gibt an, ob es sich um eine B/M Thesis oder einen Praxisphasen-/Projektstudiumsbericht handelt.
 
-(Eine genaue Beschreibung aller Parameter wird hier noch eingefügt)
-<!-- `abstractpath`[Zeichenkette]: relativer Pfad zu einer .tex Datei, die den Text des Abstrakts enthält. -->
+* `MySemester`: Semester mit Jahreszahl (nur benötigt wenn Type = praxis/projekt)
 
-<!-- `conficlausepath` [Zeichenkette]: relativer Pfad zu einer .tex Datei, die den Text der Vertraulichkeitsklausel -->
+* `MyNumberPP`: Nummer der Praxisphase (nur benötigt wenn Type = praxis)
 
-<!-- `bibpath`[Zeichenkette]: relativer Pfad zu einer .bib Datei, die die Definitionen des Literaturverzeichnisses enthält. -->
+* `MyTitle`: Titel des Projekts / der Thesis
 
-<!-- `lang`["en", "de"]: gibt an, ob der Bericht in Englisch oder Deutsch verfasst ist. -->
+* `student`: Name des Studenten
 
-<!-- `type`["thesis", "report"]: gibt an, ob der Bericht ein Praxisphasenbericht oder eine Thesis ist. -->
+* `studentStrasse`: Adresse des Studenten
 
-<!-- `hasfigures`: gibt an, ob eine Liste der Abbildungen eingefügt werden soll -->
-<!-- `hastables`: gibt an, ob eine Liste der Tabellen eingefügt werden soll -->
-<!-- `haslistings`: gibt an, ob eine Liste der Listings eingefügt werden soll -->
+* `studentOrt`: Wohnort des Studenten
 
+* `matnr`: Matrikelnummer des Studenten
+
+* `betreuer`: Name des Firmenbetreuers
+
+* `professor`: Name des Professors / Hochschulbetreuers
+
+* `firma`: Name des Partnerunternehmens
+
+* `firmaOrt`: Ort des Unternehmens / Außenstelle
+
+* `abgabedat`: Abgabedatum des Berichts (Für das aktuelle Datum kann `\today` verwendet werden)
+
+### Optionale Parameter
+Optionale Parameter können auskommentiert werden, wenn sie nicht benötigt werden.
+
+* `MyHasTables`: Gibt an, ob eine Liste der Tabellen eingefügt werden soll.
+
+* `MyHasFigures`: Gibt an, ob eine Liste der Abbildungen eingefügt werden soll.
+
+* `MyAbbrevPath`: Relativer Pfad zu einer .tex Datei, die den Text des Abkürzungsverzeichnisses enthält.
+
+* `MyConficlausepath`: Relativer Pfad zu einer .tex Datei, die den Text des Sperrvermerks enthält.
+
+* `MyAbstractpath`: Relativer Pfad zu einer .tex Datei, die den Text des Abstracts enthält.
+
+* `MyBibpath`: Relativer Pfad zu einer .bib Datei, die die Definitionen der Literaturquellen enthält.
+
+* `MyStatutoryDeclPath`: Relativer Pfad zu einer .tex Datei, die den Text der eidesstattlichen Erklärung enthält.
+
+* `MyLogo`: Relativer Pfad zu einem Bild, welches das Firmenlogo enthält.
+
+* `MyAppendixPath`: Relativer Pfad zu einer .tex Datei, die den Text des Anhangs enthält.
 
 # Eingebundene Packages
 Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustellen.
 
-* ifthen
-    logische Algebra zum abfragen von Werten und ausführen von ensprechenden Anweisungen
+* `ifthen`: Logische Algebra zum Abfragen von Werten und bedingtem Ausführen von Anweisungen.
 
-* setspace
-    Der zeilenabstand wird damit verändert.
+* `setspace`: Bietet die Möglichkeit den Zeilenabstand zu verändern.
 
-* helvet 
-    Helvetica Font (sehr ähnlich zu Arial)
+* `helvet`: Ändert die Schriftart zu Helvetica (sehr ähnlich zu Arial).
 
-* etoolbox
-    Enthält `\AfterEndPreamble`, wird verwendet um Titelseite, Inhaltsangabe, etc. am Anfang des Dokuments einzufügen.
+* `etoolbox`: Enthält u.A. `\AfterEndPreamble`. Wird verwendet, um bestimmte Inhalte am Anfang und Ende des Dokumentes einzufügen.
 
-* biblatex
-    Erstellung und Management der Bibliographie 
+* `biblatex`: Erstellung und Verwaltung des Literaturverzeichnisses und der Literaturverweise. 
 
-* chngcntr
+* `chngcntr`: Nummerierung von Tabellen und Abbildungen fortlaufen über das gesamte Dokument.
 
-* scaled
+* `tocloft`: Formatierung von Einträgen in Inhalts-, Abbildungs- und Tabellenverzeichnis.
 
-* tocloft
+* `babel`: Ändert die Sprache von Texten wie "Inhaltsverzeichnis" auf Deutsch.
 
-* babel
+* `titlesec`: Formatieren von Kapitelüberschriften.
 
-* csquotes
+* `fontenc`: Ändert die Schriftcodierung. (z.B. ö tatsächlich ein ö und nicht o mit 2 Punkten darüber)
 
-* titlesec
+* `parskip`: Konfiguration des Absatzabstands.
 
-* fontenc
+* `hyperref`: Fügt Hyperlinks vom Inhaltsverzeichnis zu den Inhalten ein.
 
-* parskip
+* `booktabs`: Paket zum Erstellen von simplen Tabellen.
 
-* hyperref
+* `microtype`: Optimierung von Wortabständen, Zeilenumbrüchen und Buchstaben-Skalierung.
 
-* booktabs
+* `caption`: Formatierung der Abbildungs- und Tabellenbeschriftungen.
 
-* microtype
+* `fancyhdr`: Formatierung von Kopf- und Fußzeilen.
 
-* caption
+* `xcolor`: Verwenden von Farben. (z.B. horizontale Linie in der Kopfzeile)
 
-* fancyhdr
+* `graphicx`: Paket um Bilder mittels `\includegraphics{}` einzubinden.
 
-* xcolor
-
-* graphicx
-
-* geometry
+* `geometry`: Anpassen des Seitenformats und der Seitenränder.
 
 ## Packages nur für das Beispiel benötigt: 
-* chemformula
+* `chemformula`: Erlaubt das Einfügen von chemischen Formeln mittels `\ch`.

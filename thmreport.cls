@@ -9,7 +9,6 @@
 
 % ---Pakete laden---
 \RequirePackage[ngerman]{babel}
-\RequirePackage{csquotes}
 \RequirePackage{titlesec}
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
