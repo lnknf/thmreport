@@ -17,6 +17,7 @@
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage{booktabs}
 \RequirePackage{microtype}
+\RequirePackage[nogroupskip,nopostdot,nonumberlist,toc]{glossaries}
 
 % Warnings filtern
 \RequirePackage{silence}
@@ -53,6 +54,21 @@
 \RequirePackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
+% Abkürzungsverzeichnis
+\ifdef{\MyAbbrevPath}{
+
+  % Befehl für Abkürzungen
+  \newcommand{\abk}[3]{
+    \newglossaryentry{#1}
+    {
+        name={#2},
+        description={#3}
+    }
+  }
+  \makeglossaries
+  \setlength{\glsdescwidth}{0.9\textwidth}
+  \input{\MyAbbrevPath}
+}
 
 % Texte für Type und Subttype definieren
 \ifthenelse{\equal{\MyType}{bachelor}}{
@@ -107,8 +123,10 @@
 
   % Inhaltsverzeichnis einfügen
   \clearpage
+  \singlespacing
   \tableofcontents
-
+  \onehalfspacing
+  
   % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
   \ifdef{\MyHasFigures}{
     \clearpage
@@ -126,10 +144,7 @@
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
     \clearpage
-    \chapter*{Abkürzungsverzeichnis}
-    \chaptermark{Abkürzungsverzeichnis}
-    \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
-    \input{\MyAbbrevPath}
+    \printglossary[title=Abkürzungsverzeichnis]
   }
     
   \clearpage

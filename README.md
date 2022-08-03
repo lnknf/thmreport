@@ -39,7 +39,7 @@ Das Literaturverzeichnis wird nach Vorgabe am Ende des Dokumentes eingefügt und
 Zum Zitieren reicht es aus, `\cite{QUELLE}` zu nutzen.
 
 ## Abkürzungsverzeichnis
-Ein Abkürzungsverzeichnis kann automatisch eingebunden werden.
+Ein Abkürzungsverzeichnis kann anhand der verwendeten Abkürzungen automatisch erstellt werden.
 
 ## Sperrvermerk
 Ein beispielhafter Sperrvermerk ist bereits vorhanden und kann bei Bedarf genutzt werden.
@@ -91,7 +91,7 @@ Optionale Parameter können auskommentiert werden, wenn sie nicht benötigt werd
 
 * `MyHasFigures`: Gibt an, ob eine Liste der Abbildungen eingefügt werden soll.
 
-* `MyAbbrevPath`: Relativer Pfad zu einer .tex Datei, die den Text des Abkürzungsverzeichnisses enthält.
+* `MyAbbrevPath`: Relativer Pfad zu einer .tex Datei, die die Definitionen der Abkürzungen enthält.
 
 * `MyConficlausepath`: Relativer Pfad zu einer .tex Datei, die den Text des Sperrvermerks enthält.
 
@@ -149,6 +149,8 @@ Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustell
 * `csquotes`: Passt u.A. die Anführungszeichen an die Sprache an. (Wird von `babel` benötigt).
 
 * `silence`: Unterdrücken von nicht vermeidbaren Warnungen.
+
+* `glossaries`: Verwenden von Abkürzungen, automatisches Erstellen eines Abkürzungsverzeichnisses.
 
 ## Packages nur für das Beispiel benötigt: 
 * `chemformula`: Erlaubt das Einfügen von chemischen Formeln mittels `\ch`.
