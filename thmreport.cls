@@ -125,7 +125,7 @@
   \clearpage
   \singlespacing
   \tableofcontents
-  \onehalfspacing
+  
   
   % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
   \ifdef{\MyHasFigures}{
@@ -140,7 +140,7 @@
     \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
     \listoftables
   }
-  
+  \onehalfspacing
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
     \clearpage
