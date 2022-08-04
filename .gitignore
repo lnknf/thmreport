@@ -1,5 +1,7 @@
 dircite.png
 
+.vscode/settings.json
+
 # Latex Stuff
 *.fls
 *.bcf
