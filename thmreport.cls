@@ -17,7 +17,7 @@
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage{booktabs}
 \RequirePackage{microtype}
-\RequirePackage[nogroupskip,nopostdot,nonumberlist,toc]{glossaries}
+\RequirePackage[nogroupskip,nopostdot,nonumberlist,style=super,toc]{glossaries}
 
 % Warnings filtern
 \RequirePackage{silence}
