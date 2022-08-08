@@ -189,10 +189,23 @@
   \usebibmacro{authorb}%
   \setunit{\nametitledelim}\newblock
   \usebibmacro{title}%
-  \printunit{\aftertitledelim}
+  \printunit{\nametitledelim}
   \newunit\newblock
-  \usebibmacro{urlcomplete}%
-  % \usebibmacro{url+urldate}%
+  \printlist{location}%
+  \printunit{\nametitledelim}
+  \newunit\newblock
+  \printfield{year}%
+}
+
+\DeclareBibliographyDriver{webpage}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{authorb}%
+  \setunit{\nametitledelim}\newblock
+  \usebibmacro{title}%
+  \printunit{\nametitledelim}
+  \newunit\newblock
+  % \usebibmacro{urlcomplete}%
+  \usebibmacro{url+urldate}%
 }
 
 % Remove all emphasis and enquoting
