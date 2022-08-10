@@ -192,9 +192,9 @@
     backend=biber,%
     sorting=none,%
     style=template/LNI_custom,%
-    hyperref=auto]{biblatex}
+    hyperref=auto,
+    block=space]{biblatex}
   \addbibresource{\MyBibpath}
-
 }
 
 % Nummerierung von Abbildungen und Tabellen fortlaufend und nicht Kapitelabhängig
