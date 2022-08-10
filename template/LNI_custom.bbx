@@ -79,16 +79,18 @@
   \mkbibbold{\usebibmacro{author}}
 }
 
-\newbibmacro*{urlcomplete}{% 
-  \printfield{url}
-  \usebibmacro{urldate}
-}
-
 \newbibmacro*{publisher+location}{%
     \printlist{publisher}%
  \newunit%
         \printlist{location}%
    \newunit}
+
+\newbibmacro*{ausgabe}{
+  \printtext{Ausgabe\addcolon}
+  \printfield{number}%
+  \printtext{\volnumdelim}%
+  \printfield{year}
+}
 
 \DeclareLabelalphaTemplate{
   \labelelement{
@@ -110,26 +112,17 @@
 \DeclareBibliographyDriver{book}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \ifnameundef{author}
-    {\usebibmacro{editor}}
-    {\usebibmacro{authorb}}%
+  \usebibmacro{authorb}
   \setunit{\nametitledelim}\newblock%
   \usebibmacro{title}%
   \printunit{\aftertitledelim}%
   \newunit\newblock
-  \printfield{note}%
+  \printfield{edition}%
   \newunit\newblock
   \usebibmacro{publisher+location}%
   \printfield{year}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \newunit\newblock
-  \iftoggle{bbx:related}
-    {\usebibmacro{related:init}%
-     \usebibmacro{related}}
-    {}%
   \usebibmacro{finentry}%
 }
 
@@ -137,51 +130,20 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{authorb}%
-  \setunit{\nametitledelim}\newblock
+  \setunit{\labelnamepunct}\newblock
   \usebibmacro{title}%
-  \printunit{\aftertitledelim}
-  \printlist{language}%
   \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock
+  \usebibmacro{in:}%
   \usebibmacro{journal}%
-  \setunit*{\addspace}%
-  \iffieldundef{series}
-    {}
-    {\newunit
-     \printfield{series}%
-     \setunit{\addspace}}%
-  \printfield{volume}%
-  \printtext{\volnumdelim}%
-  \printfield{number}%
-  \setunit{\addspace}%
-  \usebibmacro{issue}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
+  \newunit\newblock
+  \usebibmacro{ausgabe}
+  \newunit\newblock
   \usebibmacro{note+pages}%
-  \newunit
+  \newunit\newblock
   \usebibmacro{date}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{issn}}
-    {}%
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
-  \newunit\newblock
-  \iftoggle{bbx:related}
-    {\usebibmacro{related:init}%
-     \usebibmacro{related}}
-    {}%
-  \usebibmacro{finentry}
 }
 
 \DeclareBibliographyDriver{misc}{%
@@ -202,17 +164,45 @@
   \usebibmacro{authorb}%
   \setunit{\nametitledelim}\newblock
   \usebibmacro{title}%
-  \printunit{\nametitledelim}
+  \newunit\newblock
+  \printlist{location}%
+  \newunit\newblock
+  \usebibmacro{date}%
   \newunit\newblock
   % \usebibmacro{urlcomplete}%
   \usebibmacro{url+urldate}%
+}
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{authorb}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{editor+others}%
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{publisher+location}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \printfield{year}%
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}
 }
 
 % Remove all emphasis and enquoting
 \DeclareFieldFormat*{booktitle}{#1}
 \DeclareFieldFormat*{journaltitle}{#1}
 \DeclareFieldFormat*{title}{#1}
-\DeclareFieldFormat{urldate}{\addcomma\addspace \bibstring{urlseen}\addcolon\addspace#1}
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat{urldate}{\addcomma\addspace Abrufdatum\addspace#1}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
 \urlstyle{same}
 \endinput
 %% End of file `LNI.bbx'.
