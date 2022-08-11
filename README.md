@@ -28,6 +28,9 @@ Das Template existiert, um die Erstellung des Berichts einfacher zu gestalten. V
 ## Maße
 Die vorgegebenen Abstände entsprechen den offiziellen Vorgaben der THM/StudiumPlus. Falls keine genauen Vorgaben gemacht werden, wurde das Dokument "Richtlinie Wissenschaftliches Arbeiten" selbst als Vorlage verwendet.
 
+## Bilder
+Bilder können mittels `\img` eingebunden werden. Dabei müssen eine Beschreibung, der Pfad zu der Bilddatei und ein Label und das Bild referenzieren zu können angegeben werden.
+
 ## Firmenlogo
 Es besteht die Möglichkeit ein Firmenlogo einzubinden. Dieses wird auf jeder Seite oben rechts erscheinen. Auf der Titelseite ist es unten rechts zu finden. Es sollten im besten Fall ähnliche Maße wie das Beispielbild aufweisen.
 
@@ -39,7 +42,7 @@ Das Literaturverzeichnis wird nach Vorgabe am Ende des Dokumentes eingefügt und
 Zum Zitieren reicht es aus, `\cite{QUELLE}` zu nutzen.
 
 ## Abkürzungsverzeichnis
-Ein Abkürzungsverzeichnis kann anhand der verwendeten Abkürzungen automatisch erstellt werden.
+Ein Abkürzungsverzeichnis kann anhand der verwendeten Abkürzungen automatisch erstellt werden. Abkürzungen werden mit `\abk` erstellt.
 
 ## Sperrvermerk
 Ein beispielhafter Sperrvermerk ist bereits vorhanden und kann bei Bedarf genutzt werden.
@@ -108,35 +111,37 @@ Optionale Parameter können auskommentiert werden, wenn sie nicht benötigt werd
 # Eingebundene Packages
 Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustellen.
 
-* `ifthen`: Logische Algebra zum Abfragen von Werten und bedingtem Ausführen von Anweisungen.
-
-* `setspace`: Bietet die Möglichkeit den Zeilenabstand zu verändern.
-
-* `helvet`: Ändert die Schriftart zu Helvetica (sehr ähnlich zu Arial).
-
-* `etoolbox`: Enthält u.A. `\AfterEndPreamble`. Wird verwendet, um bestimmte Inhalte am Anfang und Ende des Dokumentes einzufügen.
-
-* `biblatex`: Erstellung und Verwaltung des Literaturverzeichnisses und der Literaturverweise. 
-
-* `chngcntr`: Nummerierung von Tabellen und Abbildungen fortlaufen über das gesamte Dokument.
-
-* `tocloft`: Formatierung von Einträgen in Inhalts-, Abbildungs- und Tabellenverzeichnis.
-
 * `babel`: Ändert die Sprache von Texten wie "Inhaltsverzeichnis" auf Deutsch.
+
+* `csquotes`: Passt u.A. die Anführungszeichen an die Sprache an. (Wird von `babel` benötigt).
 
 * `titlesec`: Formatieren von Kapitelüberschriften.
 
+* `ifthen`: Logische Algebra zum Abfragen von Werten und bedingtem Ausführen von Anweisungen.
+
+* `etoolbox`: Enthält u.A. `\AfterEndPreamble`. Wird verwendet, um bestimmte Inhalte am Anfang und Ende des Dokumentes einzufügen.
+
 * `fontenc`: Ändert die Schriftcodierung. (z.B. ö tatsächlich ein ö und nicht o mit 2 Punkten darüber)
-
-* `parskip`: Konfiguration des Absatzabstands.
-
-* `hyperref`: Fügt Hyperlinks vom Inhaltsverzeichnis zu den Inhalten ein.
 
 * `booktabs`: Paket zum Erstellen von simplen Tabellen.
 
 * `microtype`: Optimierung von Wortabständen, Zeilenumbrüchen und Buchstaben-Skalierung.
 
+* `silence`: Unterdrücken von nicht vermeidbaren Warnungen.
+
 * `caption`: Formatierung der Abbildungs- und Tabellenbeschriftungen.
+
+* `tocloft`: Formatierung von Einträgen in Inhalts-, Abbildungs- und Tabellenverzeichnis.
+
+* `parskip`: Konfiguration des Absatzabstands.
+
+* `helvet`: Ändert die Schriftart zu Helvetica (sehr ähnlich zu Arial).
+
+* `chngcntr`: Nummerierung von Tabellen und Abbildungen fortlaufen über das gesamte Dokument.
+
+* `setspace`: Bietet die Möglichkeit den Zeilenabstand zu verändern.
+
+* `biblatex`: Erstellung und Verwaltung des Literaturverzeichnisses und der Literaturverweise. 
 
 * `fancyhdr`: Formatierung von Kopf- und Fußzeilen.
 
@@ -146,9 +151,7 @@ Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustell
 
 * `geometry`: Anpassen des Seitenformats und der Seitenränder.
 
-* `csquotes`: Passt u.A. die Anführungszeichen an die Sprache an. (Wird von `babel` benötigt).
-
-* `silence`: Unterdrücken von nicht vermeidbaren Warnungen.
+* `hyperref`: Fügt Hyperlinks vom Inhaltsverzeichnis zu den Inhalten ein.
 
 * `glossaries`: Verwenden von Abkürzungen, automatisches Erstellen eines Abkürzungsverzeichnisses.
 

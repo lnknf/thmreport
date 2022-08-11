@@ -22,6 +22,7 @@
 \RequirePackage{parskip}
 \RequirePackage[scaled]{helvet}
 \RequirePackage{chngcntr}
+\RequirePackage{setspace}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -62,7 +63,6 @@
 \renewcommand\cfttabaftersnum{:}
 
 % Zeilenabstand 1.5-fach
-\RequirePackage{setspace}
 \onehalfspacing
 
 % Schriftart
@@ -229,6 +229,7 @@
   \end{figure}
 }
 
+%Metadaten:
 \hypersetup{
   pdftitle   = {\reporttype},
   pdfauthor  = {\student},

@@ -24,11 +24,8 @@ Eine neue Seite beginnt man mit \textbackslash newpage.
 Kommentare werden übrigens nicht als Leerzeilen gezählt.
 
 %So integriert man ein Bild
-\begin{figure}[h]                                               % Anfang der Deklaration einer Abbildung
-    \includegraphics[width=0.5\textwidth]{content/img/company.png}        % Einbinden der Grafik mit halber Breite des Textbereichs
-    \caption{Firmenlogo}                                        % Bezeichnung der Abbildung
-    \label{fig:firmenlogo}                                      % Interne Bezeichnung der Abbildung um aus dem Text darauf verweisen zu können
-\end{figure}
+%\img{Bezeichnung die unter der Abbildung stehen soll}{pfad/zur/bilddatei.png}{fig:label_zur_referenzierung}
+\img{Firmenlogo}{content/img/company.png}{fig:firmenlogo}
 
 Man kann zum Beispiel wie folgt auf eine Abbildung oder Tabelle verweisen: Siehe \autoref{fig:firmenlogo}
 
