@@ -14,22 +14,44 @@
 \RequirePackage{ifthen}
 \RequirePackage{etoolbox}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage{booktabs}
 \RequirePackage{microtype}
+\RequirePackage{silence}
+\RequirePackage[singlelinecheck=false]{caption} % Linksbündig machen
+\RequirePackage[titles]{tocloft}
+\RequirePackage{parskip}
+\RequirePackage[scaled]{helvet}
+\RequirePackage{chngcntr}
+
+% Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
+\ifdef{\MyBibpath}{  
+  \RequirePackage[%
+    backend=biber,%
+    sorting=none,%
+    style=template/LNI_custom,%
+    hyperref=auto,
+    block=space]{biblatex}
+  \addbibresource{\MyBibpath}
+}
+
+% ausgelagerte eigene Pakete
+\RequirePackage{template/thmpagestyles}
+\RequirePackage{template/thmtitlepage}
+
+% Diese Pakete müssen zuletzt geladen werden
+\RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage[nogroupskip,nopostdot,nonumberlist,style=super,toc]{glossaries}
 
+
+
 % Warnings filtern
-\RequirePackage{silence}
 \WarningFilter{microtype}{Unable to apply patch `footnote'}
 
 % Captions von Tabellen und Abbildungen formatieren
-\RequirePackage[singlelinecheck=false]{caption} % Linksbündig machen
 \captionsetup[figure]{labelfont={bf}} % "Abbildung X" fett machen
 \captionsetup[table]{labelfont={bf}} % "Tabelle X" fett machen
 
 % Tabellen- und Abbildungsverzeichnis formatieren
-\RequirePackage[titles]{tocloft}
 \renewcommand\cftfigindent{\setlength{1pt}}
 \renewcommand\cftfignumwidth{\setlength{73pt}}
 \renewcommand\cftfigpresnum{Abbildung }
@@ -39,19 +61,11 @@
 \renewcommand\cfttabpresnum{Tabelle }
 \renewcommand\cfttabaftersnum{:}
 
-\RequirePackage{parskip}
-
-% ausgelagerte eigene Pakete
-\RequirePackage{template/thmpagestyles}
-\RequirePackage{template/thmtitlepage}
-
-
 % Zeilenabstand 1.5-fach
 \RequirePackage{setspace}
 \onehalfspacing
 
 % Schriftart
-\RequirePackage[scaled]{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Abkürzungsverzeichnis
@@ -125,13 +139,16 @@
   \clearpage
   \singlespacing
   \tableofcontents
-  
+  \onehalfspacing
   
   % Liste der Abbildungen einfügen falls \MyHasFigures angegeben
   \ifdef{\MyHasFigures}{
     \clearpage
     \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+    \begingroup
+    \renewcommand*{\addvspace}[1]{}
     \listoffigures
+    \endgroup
   }
   
   % Liste der Tabellen einfügen falls \MyHasTables angegeben
@@ -140,7 +157,7 @@
     \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
     \listoftables
   }
-  \onehalfspacing
+  
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
     \clearpage
@@ -184,21 +201,12 @@
   }
 }
 
-
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
-
-  \usepackage[%
-    backend=biber,%
-    sorting=none,%
-    style=template/LNI_custom,%
-    hyperref=auto,
-    block=space]{biblatex}
   \addbibresource{\MyBibpath}
 }
 
 % Nummerierung von Abbildungen und Tabellen fortlaufend und nicht Kapitelabhängig
-\RequirePackage{chngcntr}
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
@@ -206,3 +214,23 @@
 \titleformat{\chapter}
   {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{-5.8ex}{1.3ex plus .2ex}
+
+%Highlighting von vorübergehenden Änderungen
+\newcommand{\tmp}[1]{
+  \textcolor{red}{\textbf{#1}}
+}
+
+%Befehl für Bilder
+\newcommand{\img}[3]{
+  \begin{figure}[h]
+    \includegraphics[width=\textwidth]{#2}
+    \caption{#1}
+    \label{#3}
+  \end{figure}
+}
+
+\hypersetup{
+  pdftitle   = {\reporttype},
+  pdfauthor  = {\student},
+  pdfsubject = {\MyTitle},
+}
