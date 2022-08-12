@@ -216,17 +216,22 @@
 \titlespacing*{\chapter}{0pt}{-5.8ex}{1.3ex plus .2ex}
 
 %Highlighting von vorübergehenden Änderungen
-\newcommand{\tmp}[1]{
-  \textcolor{red}{\textbf{#1}}
+\newcommand{\tmp}[1]{%
+  \textcolor{red}{\textbf{#1}}%
 }
 
 %Befehl für Bilder
-\newcommand{\img}[3]{
-  \begin{figure}[h]
-    \includegraphics[width=\textwidth]{#2}
-    \caption{#1}
-    \label{#3}
-  \end{figure}
+\newcommand{\img}[3]{%
+  \begin{center}%
+    \includegraphics[width=\textwidth]{#2}%
+    \captionof{figure}{#1}%
+    \label{#3}%
+  \end{center}%
+}
+
+%Befehl für Anführungszeichen
+\newcommand{\az}[1]{%
+  \glqq #1\grqq{}%
 }
 
 %Metadaten:
