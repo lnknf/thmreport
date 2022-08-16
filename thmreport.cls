@@ -47,6 +47,7 @@
 
 % Warnings filtern
 \WarningFilter{microtype}{Unable to apply patch `footnote'}
+\WarningFilter{caption}{The option `hypcap=true' will be ignored for this}
 
 % Captions von Tabellen und Abbildungen formatieren
 \captionsetup[figure]{labelfont={bf}} % "Abbildung X" fett machen
