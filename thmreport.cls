@@ -23,6 +23,7 @@
 \RequirePackage[scaled]{helvet}
 \RequirePackage{chngcntr}
 \RequirePackage{setspace}
+\RequirePackage{inconsolata}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -233,6 +234,11 @@
 %Befehl für Anführungszeichen
 \newcommand{\az}[1]{%
   \glqq #1\grqq{}%
+}
+
+%Befehl für Code
+\newcommand{\code}[1]{%
+  \texttt{#1}%
 }
 
 %Metadaten:

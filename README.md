@@ -141,6 +141,8 @@ Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustell
 
 * `setspace`: Bietet die Möglichkeit den Zeilenabstand zu verändern.
 
+* `inconsolata`: Setzt Consolas als Schriftart für Monospace Schrift.
+
 * `biblatex`: Erstellung und Verwaltung des Literaturverzeichnisses und der Literaturverweise. 
 
 * `fancyhdr`: Formatierung von Kopf- und Fußzeilen.
