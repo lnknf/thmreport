@@ -143,6 +143,10 @@ Es sind einige packages nötig, um die Funktionalität der Vorlage bereitzustell
 
 * `inconsolata`: Setzt Consolas als Schriftart für Monospace Schrift.
 
+* `placeins`: Verhindert das Anzeigen von Floats(figure, table, ...) im nächsten Absatz.
+
+* `hyphenat`: Ermöglicht Zeilenumbrüche in Monospace Textstellen.
+
 * `biblatex`: Erstellung und Verwaltung des Literaturverzeichnisses und der Literaturverweise. 
 
 * `fancyhdr`: Formatierung von Kopf- und Fußzeilen.

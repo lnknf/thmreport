@@ -24,6 +24,8 @@
 \RequirePackage{chngcntr}
 \RequirePackage{setspace}
 \RequirePackage{inconsolata}
+\RequirePackage[section]{placeins} %\FloatBarrier
+\RequirePackage[htt]{hyphenat}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -49,6 +51,7 @@
 % Warnings filtern
 \WarningFilter{microtype}{Unable to apply patch `footnote'}
 \WarningFilter{caption}{The option `hypcap=true' will be ignored for this}
+\WarningFilter{latexfont}{Font shape}
 
 % Captions von Tabellen und Abbildungen formatieren
 \captionsetup[figure]{labelfont={bf}} % "Abbildung X" fett machen
@@ -224,11 +227,11 @@
 
 %Befehl für Bilder
 \newcommand{\img}[3]{%
-  \begin{center}%
+  \begin{figure}[ht]%
     \includegraphics[width=\textwidth]{#2}%
-    \captionof{figure}{#1}%
+    \caption{#1}%
     \label{#3}%
-  \end{center}%
+  \end{figure}%
 }
 
 %Befehl für Anführungszeichen
