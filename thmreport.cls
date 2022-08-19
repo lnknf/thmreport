@@ -122,9 +122,7 @@
 \AfterEndPreamble{
   \maketitle 
 
-  \pagenumbering{Roman}
-  \setcounter{page}{2}
-  \pagestyle{plain}
+  \pagenumbering{gobble}
 
   % Sperrvermerk einfügen falls \MyConficlausepath angegeben
   \ifdef{\MyConficlausepath}{
@@ -142,6 +140,9 @@
 
   % Inhaltsverzeichnis einfügen
   \clearpage
+  \pagenumbering{Roman}
+  \setcounter{page}{2}
+  \pagestyle{plain}
   \singlespacing
   \tableofcontents
   \onehalfspacing
@@ -226,11 +227,11 @@
 }
 
 %Befehl für Bilder
-\newcommand{\img}[3]{%
+\newcommand{\img}[4][1]{%
   \begin{figure}[ht]%
-    \includegraphics[width=\textwidth]{#2}%
-    \caption{#1}%
-    \label{#3}%
+    \includegraphics[width=#1\textwidth]{#3}%
+    \caption{#2}%
+    \label{#4}%
   \end{figure}%
 }
 
