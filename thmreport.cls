@@ -176,7 +176,6 @@
 }
 
 % Literaturverzeichnis einfügen falls \MyBibpath angegeben
-% (important: AtEndDocument needs to be defined, before biblatex is imported; see https://tex.stackexchange.com/questions/371814)
 \AtEndDocument{
   % \pagestyle{empty}
   \ifdef{\MyBibpath}{
@@ -195,9 +194,9 @@
   
   \clearpage
   \appendix
-  \addtocontents{toc}{\protect\setlength{\cftchapnumwidth}{75pt}}
+  \addtocontents{toc}{\protect\setlength{\cftchapnumwidth}{65pt}}
   \renewcommand{\thechapter}{Anhang \Roman{chapter}}
-  \newcommand{\anhang}[1]{
+  \newcommand{\anhang}[1]{%
     \chapter{#1}%
     \chaptermark{\thechapter \quad #1}%
   }
@@ -228,11 +227,31 @@
 
 %Befehl für Bilder
 \newcommand{\img}[4][1]{%
-  \begin{figure}[ht]%
+  \begin{figure}[htb]%
     \includegraphics[width=#1\textwidth]{#3}%
     \caption{#2}%
     \label{#4}%
   \end{figure}%
+}
+
+% Befehl für 2 Bilder nebeneinander
+\newcommand{\imgTwo}[6]{%
+  \begin{figure}[htb]
+    \centering
+    \begin{minipage}[t]{.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{#2}
+        \caption{#1}
+        \label{#3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{.49\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{#5}
+        \caption{#4}
+        \label{#6}
+    \end{minipage}
+  \end{figure}
 }
 
 %Befehl für Anführungszeichen
@@ -245,9 +264,30 @@
   \texttt{#1}%
 }
 
+% Befehl für autoref Anhang
+\newcommand{\autorefa}[1]{%
+  \hyperref[#1]{\ref{#1}}%
+}
+
 %Metadaten:
 \hypersetup{
   pdftitle   = {\reporttype},
   pdfauthor  = {\student},
   pdfsubject = {\MyTitle},
 }
+
+% Subsubsections nummerieren
+% \setcounter{secnumdepth}{3}
+
+% Subsubsections mit Punkten davor
+\renewcommand{\subsubsection}[1]{\heading{#1}}
+
+\makeatletter
+\newcommand{\heading}[1]
+{\par\vskip 2ex \@plus .2ex
+ \hangindent=1em
+ \noindent\makebox[2em][l]{$\,\bullet$}\textbf{\large #1}%
+\par\vskip .5ex \@plus .2ex
+\@afterheading}
+\makeatother
+
