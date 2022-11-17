@@ -26,6 +26,7 @@
 \RequirePackage{inconsolata}
 \RequirePackage[section]{placeins} %\FloatBarrier
 \RequirePackage[htt]{hyphenat}
+\RequirePackage{remreset}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -46,6 +47,10 @@
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage[nogroupskip,nopostdot,nonumberlist,style=super,toc]{glossaries}
 
+\makeatletter
+\@removefromreset{equation}{chapter}
+\makeatother
+\renewcommand*{\theequation}{\arabic{equation}}
 
 
 % Warnings filtern
