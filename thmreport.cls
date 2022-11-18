@@ -26,7 +26,6 @@
 \RequirePackage{inconsolata}
 \RequirePackage[section]{placeins} %\FloatBarrier
 \RequirePackage[htt]{hyphenat}
-\RequirePackage{remreset}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -47,11 +46,24 @@
 \RequirePackage[hidelinks]{hyperref} % [unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,breaklinks=false,pdfborder={0 0 0.7},backref=false,colorlinks=false]
 \RequirePackage[nogroupskip,nopostdot,nonumberlist,style=super,toc]{glossaries}
 
+% Formeln formatieren
+\renewcommand*{\theequation}{\arabic{equation}}
+\let\orgautoref\autoref
+\renewcommand{\autoref}[1]{\def\equationautorefname{Formel}\orgautoref{#1}}
 \makeatletter
 \@removefromreset{equation}{chapter}
+\def\tagform@#1{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\let\orgtheequation\theequation
+\def\theequation{(\orgtheequation)}
 \makeatother
-\renewcommand*{\theequation}{\arabic{equation}}
 
+
+% Formelverzeichnis formatieren
+\newcommand{\listequationsname}{Formelverzeichnis}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\renewcommand\cftmyequationsnumwidth{\setlength{25pt}}
 
 % Warnings filtern
 \WarningFilter{microtype}{Unable to apply patch `footnote'}
@@ -169,6 +181,13 @@
     \listoftables
   }
   
+  % Formelverzeichnis einfügen falls \MyHasEquations angegeben
+  \ifdef{\MyHasEquations}{
+    \clearpage
+    \addcontentsline{toc}{chapter}{Formelverzeichnis}
+    \listofmyequations
+  }
+
   % Abkürzungsverzeichnis einfügen falls \MyAbbrevPath angegeben
   \ifdef{\MyAbbrevPath}{
     \clearpage
@@ -295,4 +314,3 @@
 \par\vskip .5ex \@plus .2ex
 \@afterheading}
 \makeatother
-

@@ -94,6 +94,8 @@ Optionale Parameter können auskommentiert werden, wenn sie nicht benötigt werd
 
 * `MyHasFigures`: Gibt an, ob eine Liste der Abbildungen eingefügt werden soll.
 
+* `MyHasEquations`: Gibt an, ob eine Liste der Formeln eingefügt werden soll.
+
 * `MyAbbrevPath`: Relativer Pfad zu einer .tex Datei, die die Definitionen der Abkürzungen enthält.
 
 * `MyConficlausepath`: Relativer Pfad zu einer .tex Datei, die den Text des Sperrvermerks enthält.
