@@ -18,6 +18,9 @@ Alternativ kann auch die Template-Funktion von GitHub genutzt werden und so der 
 
 Dieses Projekt wurde mit der LaTeX-Distribution [TeXLive](https://www.tug.org/texlive/) in Visual Studio Code mit der Erweiterung [LaTeX-Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) erstellt.
 
+[Anleitung zum Installieren von TeXLive](https://www.dante.de/installation-von-tex-live-unter-windows/)
+[Anleitung zum Installieren von LaTeX-Workshop](https://github.com/James-Yu/LaTeX-Workshop/wiki/Install)
+
 Zur Rechtschreibprüfung kann die Erweiterung [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) verwendet werden.
 Optional kann dort noch die Prüfung mittels n-gram Datensätzen aktiviert werden.
 Siehe dazu folgende [Anleitung](https://dev.languagetool.org/finding-errors-using-n-gram-data.html). Der Pfad der Datensätze muss in folgender Einstellung von LTeX angegeben werden: `ltex.additionalRules.languageModel` (siehe [LTeX Settings](https://valentjn.github.io/ltex/settings.html#ltexadditionalruleslanguagemodel))
