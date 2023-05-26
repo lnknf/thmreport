@@ -127,9 +127,15 @@
         \def\reporttype{Projektstudium im \MySemester}
         \def\reportsubtype{ }
       }{
-        % Dokument ist nichts davon
-        \def\reporttype{type}
-        \def\reportsubtype{subtype}
+        \ifthenelse{\equal{\MyType}{projektphase}}{
+          % Dokument ist ein Masterprojektbericht
+          \def\reporttype{\MyNumberPP. Projektphase im \MySemester}
+          \def\reportsubtype{}
+        }{
+          % Dokument ist nichts davon
+          \def\reporttype{type}
+          \def\reportsubtype{subtype}
+        }
       }
     }
   }

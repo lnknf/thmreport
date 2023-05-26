@@ -61,11 +61,11 @@ In der Datei `appendix.tex` wird der Anhang definiert. Ein neuer Anhang kann jew
 Die documentclass enthält Variablen, die nicht als Parameter repräsentiert sind. Dafür werden Befehle verwendet, die sich wie globale Variablen verhalten.
 
 ### Erforderliche Parameter
-* `MyType` [bachelor,master,projekt,praxis]: Gibt an, ob es sich um eine B/M Thesis oder einen Praxisphasen-/Projektstudiumsbericht handelt.
+* `MyType` [bachelor,master,projekt,praxis,projektphase]: Gibt an, ob es sich um eine B/M Thesis oder einen Praxisphasenbericht Projektstudiumsbericht, oder Projektphasenbericht (Master) handelt.
 
-* `MySemester`: Semester mit Jahreszahl (nur benötigt wenn Type = praxis/projekt)
+* `MySemester`: Semester mit Jahreszahl (nur benötigt wenn Type = praxis/projekt/projektphase)
 
-* `MyNumberPP`: Nummer der Praxisphase (nur benötigt wenn Type = praxis)
+* `MyNumberPP`: Nummer der Praxisphase (nur benötigt wenn Type = praxis/projektphase)
 
 * `MyTitle`: Titel des Projekts / der Thesis
 
