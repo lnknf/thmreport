@@ -265,21 +265,21 @@
 }
 
 % Befehl für 2 Bilder nebeneinander
-\newcommand{\imgTwo}[6]{%
+\newcommand{\imgTwo}[7][1]{%
   \begin{figure}[htb]
     \centering
     \begin{minipage}[t]{.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{#2}
-        \caption{#1}
-        \label{#3}
+        \includegraphics[width=#1\linewidth]{#3}
+        \caption{#2}
+        \label{#4}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{.49\linewidth}
         \centering
-        \includegraphics[width=\linewidth]{#5}
-        \caption{#4}
-        \label{#6}
+        \includegraphics[width=#1\linewidth]{#6}
+        \caption{#5}
+        \label{#7}
     \end{minipage}
   \end{figure}
 }
