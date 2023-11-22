@@ -86,10 +86,12 @@
    \newunit}
 
 \newbibmacro*{ausgabe}{
-  \printtext{Ausgabe\addcolon}
-  \printfield{number}%
-  \printtext{\volnumdelim}%
-  \printfield{year}
+  \iffieldundef{number}{}{%
+    \printtext{Ausgabe\addcolon}
+    \printfield{number}%
+    \printtext{\volnumdelim}%
+    \printfield{year}%
+  }
 }
 
 \DeclareLabelalphaTemplate{
