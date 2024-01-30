@@ -250,12 +250,12 @@
   {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{-5.8ex}{1.3ex plus .2ex}
 
-%Highlighting von vorübergehenden Änderungen
+% Highlighting von vorübergehenden Änderungen
 \newcommand{\tmp}[1]{%
   \textcolor{red}{\textbf{#1}}%
 }
 
-%Befehl für Bilder
+% Befehl für Bilder
 \newcommand{\img}[4][1]{%
   \begin{figure}[htb]%
     \includegraphics[width=#1\textwidth]{#3}%
@@ -284,12 +284,23 @@
   \end{figure}
 }
 
-%Befehl für Anführungszeichen
+% Befehl für Tabellen
+\newcommand{\tab}[4]{%
+  \begin{table}[htb]%
+    \begin{tabular}{#1}%
+      #4
+    \end{tabular}%
+    \caption{#2}%
+    \label{#3}%
+  \end{table}%
+}
+
+% Befehl für Anführungszeichen
 \newcommand{\az}[1]{%
   \glqq #1\grqq{}%
 }
 
-%Befehl für Code
+% Befehl für Code
 \newcommand{\code}[1]{%
   \texttt{#1}%
 }
@@ -299,7 +310,12 @@
   \hyperref[#1]{\ref{#1}}%
 }
 
-%Metadaten:
+% Befehl für Trademark Zeichen (™)
+\newcommand{\tm}{%
+  \textsuperscript{\texttrademark}
+}
+
+% Metadaten:
 \hypersetup{
   pdftitle   = {\reporttype},
   pdfauthor  = {\student},

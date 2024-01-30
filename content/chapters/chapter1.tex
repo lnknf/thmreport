@@ -36,8 +36,8 @@ Sie kann mittels \textbackslash autoref\{tab:liste\_der\_werkstoffe\} referenzie
 Bsp: \glqq Siehe \autoref{tab:liste_der_werkstoffe}\grqq
 
 % Beispieltabelle, & wird als Trennzeichen zwischen den Spalten verwendet
-\begin{table}[htb]
-    \begin{tabular}{lccc}\toprule                   % Toprule generiert die Linie über der Tabelle
+\tab{lccc}{Liste von Werkstoffen}{tab:liste_der_werkstoffe}{
+    \toprule                                                         % Toprule generiert die Linie über der Tabelle
     \textbf{Stoff}	&\textbf{Dichte} &\textbf{Dichte} &\textbf{chemische Bezeichnung}	\\
                 & \(kg/m^{3}\)	& \(g/cm^3\) 	& \\\midrule         % Midrule generiert die Linie in der Mitte der Tabelle
     Holz		& 400...800	& 0,400...0,800	&- \\
@@ -51,10 +51,7 @@ Bsp: \glqq Siehe \autoref{tab:liste_der_werkstoffe}\grqq
     Nickel		& 8910	& 8,91  & Ni \\
     Kupfer		& 8.920...8.960	& 8,920...8,960	& Cu\\
     Gold		& 19302	& 19,302& Au	\\\bottomrule               % Bottomrule generiert die Linie unter der Tabelle
-    \end{tabular}
-    \caption{Liste von Werkstoffen}
-    \label{tab:liste_der_werkstoffe}
-\end{table}
+}
 
 \newpage
 
