@@ -27,6 +27,7 @@
 \RequirePackage[section]{placeins} %\FloatBarrier
 \RequirePackage[htt]{hyphenat}
 \RequirePackage{atbegshi}
+\RequirePackage{array}
 
 % Literaturverwaltung (biblatex) einbinden, falls \MyBibpath angegeben
 \ifdef{\MyBibpath}{  
@@ -284,6 +285,14 @@
     \end{minipage}
   \end{figure}
 }
+
+% Neue Definition von Tabellenspalten mit fixer länge
+% left fixed width:
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+% center fixed width:
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+% flush right fixed width:
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 % Befehl für Tabellen
 \newcommand{\tab}[4]{%
