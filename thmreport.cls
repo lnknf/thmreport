@@ -370,11 +370,15 @@
 % Subsubsections mit Punkten davor
 \renewcommand{\subsubsection}[1]{\heading{#1}}
 
+% Quadrate statt Punkte im Heading von Subsubsections
+\newcommand{\squarebullet}{\raisebox{.45ex}{\rule{.6ex}{.6ex}}}
+
+% Heading für Subsubsections definieren
 \makeatletter
 \newcommand{\heading}[1]
 {\par\vskip 2ex \@plus .2ex
  \hangindent=1em
- \noindent\makebox[2em][l]{$\,\bullet$}\textbf{\large #1}%
+ \noindent\makebox[2em][l]{$\, \squarebullet$}\textbf{\large #1}%
 \par\vskip .5ex \@plus .2ex
 \@afterheading}
 \makeatother
