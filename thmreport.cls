@@ -305,6 +305,15 @@
   \end{table}%
 }
 
+% Befehl für Formeln
+\newcommand{\eq}[3]{%
+  \begin{equation}%
+    \label{#2}%
+    #3%
+  \end{equation}%
+  \myequations{#1}%
+}
+
 % Befehl für Anführungszeichen
 \newcommand{\az}[1]{%
   \glqq #1\grqq{}%
