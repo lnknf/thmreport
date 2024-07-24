@@ -300,11 +300,11 @@
 % Befehl für Tabellen
 \newcommand{\tab}[4]{%
   \begin{table}[htb]%
+    \caption{#2}%
+    \label{#3}%
     \begin{tabular}{#1}%
       #4
     \end{tabular}%
-    \caption{#2}%
-    \label{#3}%
   \end{table}%
 }
 
