@@ -186,7 +186,10 @@
   \ifdef{\MyHasTables}{
     \clearpage
     \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \let\origaddvspace\addvspace
+    \renewcommand{\addvspace}[1]{}
     \listoftables
+    \renewcommand{\addvspace}[1]{\origaddvspace{#1}}
   }
   
   % Formelverzeichnis einfügen falls \MyHasEquations angegeben
